@@ -17,6 +17,7 @@ export class AppComponent {
 
   type: string;
   examples = ['simple'];
+  fieldList = [];
 
   constructor(
     private formlyJsonschema: FormlyJsonschema,
@@ -25,24 +26,86 @@ export class AppComponent {
     this.loadExample(this.examples[0]);
   }
 
+  convertFieldGroup(response: any) {
+    Object.keys(response.properties).map(key => {
+      // console.log(key);
+      let fieldGroupList = [];
+      let entity = response.properties[key];
+      // console.log(entity);
+      let frmly = {
+        name: entity?.name,
+        id: entity?.id,
+        key: entity?.key,
+        type: entity?.type,
+        templateOptions: {
+          label: entity?.name,
+          translation: entity?.widget?.formlyConfig?.templateOptions?.transalation,
+          options: entity?.widget?.formlyConfig?.templateOptions?.options
+        }
+      };
+      console.log(frmly);
+      fieldGroupList.push(frmly);
+      this.fieldList.push({ fieldGroup : fieldGroupList});
+      this.fields = this.fieldList;
+    });
+  }
+  convertToField(response:any){
+    Object.keys(response.properties).map(key => {
+      let entity = response.properties[key];
+        let frmly = {
+          name: entity?.name,
+          id: entity?.id,
+          key: entity?.key,
+          type: entity?.type,
+          templateOptions: {
+            label: entity?.name,
+            translation: entity?.widget?.formlyConfig?.templateOptions?.transalation,
+            options: entity?.widget?.formlyConfig?.templateOptions?.options
+          }
+        };
+        console.log(frmly);
+        this.fieldList.push(frmly);
+        this.fields = this.fieldList;
+        console.log(this.fields);
+    });
+  }
+  convertToFormly(response: any) {
+    Object.keys(response.properties).map(key => {
+      let entity = response.properties[key];
+      if (entity.properties) {
+        this.convertFieldGroup(entity);
+      }
+      else {
+        let frmly = {
+          name: entity?.name,
+          id: entity?.id,
+          key: entity?.key,
+          type: entity?.type,
+          templateOptions: {
+            label: entity?.name,
+            translation: entity?.widget?.formlyConfig?.templateOptions?.transalation,
+            options: entity?.widget?.formlyConfig?.templateOptions?.options
+          }
+        };
+        console.log(frmly);
+        this.fieldList.push(frmly);
+        this.fields = this.fieldList;
+        console.log(this.fields);
+      }
+    });
+  }
   loadExample(type: string) {
     this.http
       .get<any>(`assets/json-schema/${type}.json`)
       .pipe(
         tap(response => {
-          Object.keys(response.schema.properties).map(key => {
-            let entity = response.schema.properties[key];
-            
-            console.log(entity);
-          });
+          let schema = this.convertToFormly(response.schema);
+          this.type = type;
+          this.form = new FormGroup({});
+          this.options = {};
 
-          // this.type = type;
-          // this.form = new FormGroup({});
-          // this.options = {};
-          // this.fields = [this.formlyJsonschema.toFieldConfig(schema)];
-
-          // console.log(this.fields);
-          // this.model = model;
+          this.model = {};
+          console.log(this.fields);
         })
       )
       .subscribe();

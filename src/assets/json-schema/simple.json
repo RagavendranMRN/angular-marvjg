@@ -2,114 +2,91 @@
   "schema": {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "type": "object",
-    "additionalProperties": {
-      "type": "object"
-    },
-    "title": "Quality Notification Detail",
+    "title": "QN",
     "properties": {
-      "Status": {
-        "name": "Status",
-        "id": "qn_detailInformation_status_1",
-        "key": "qn.detailInformation.status",
-        "type": "select",
-        "title": "Status",
-        "widget": {
-          "type": "select",
-          "formlyConfig": {
-            "type": "select",
-            "templateOptions": {
-              "translation": {
-                "notSupported": true,
-                "devComment": "Dev comment: QN_STATUS",
-                "translationKey": "QN_STATUS",
-                "description": "Status"
-              },
-              "options": [
-                {
-                  "translation": {
-                    "translationKey": "QN_STATUS_NEW"
-                  },
-                  "value": "new",
-                  "label": "New"
-                },
-                {
-                  "translation": {
-                    "translationKey": "QN_STATUS_IN_PROCESS"
-                  },
-                  "value": "in-process",
-                  "label": "In Process"
-                },
-                {
-                  "translation": {
-                    "translationKey": "QN_STATUS_OBSOLETED"
-                  },
-                  "value": "obsoleted",
-                  "label": "Obsoleted",
-                  "nonSelectable": true
-                },
-                {
-                  "translation": {
-                    "translationKey": "QN_STATUS_CANCELED"
-                  },
-                  "value": "canceled",
-                  "label": "Canceled",
-                  "nonSelectable": true
-                },
-                {
-                  "translation": {
-                    "translationKey": "QN_STATUS_COMPLETED"
-                  },
-                  "value": "completed",
-                  "label": "Completed"
-                },
-                {
-                  "translation": {
-                    "translationKey": "QN_STATUS_CLOSED"
-                  },
-                  "value": "closed",
-                  "label": "Closed",
-                  "nonSelectable": true
-                }
-              ]
-            }
+      "QualityNotificationActivity": {
+        "name": "QualityNotificationActivity",
+        "properties": {
+          "activityId": {
+            "name": "activityId",
+            "type": "integer"
+          },
+          "period": {
+            "name": "period"
+          },
+          "extrinsic": {
+            "name": "extrinsic",
+            "type": "string"
+          },
+          "description": {
+            "name": "description"
+          },
+          "ownerInfo": {
+            "name": "ownerInfo"
+          },
+          "id": {
+            "name": "id",
+            "type": "string"
+          },
+          "activityType": {
+            "name": "activityType"
+          },
+          "isCompleted": {
+            "name": "isCompleted",
+            "type": "string"
           }
         }
       },
-      "RequestId": {
-        "title": "AA",
-        "description": "AA",
-        "type": "object",
-        "required": [
-          "fullName"
-        ],
+      "Address": {
+        "name": "Address",
         "properties": {
-          "fullName": {
-            "type": "string",
-            "title": "First name",
-            "default": "Chuck"
+          "isoCountryCode": {
+            "name": "isoCountryCode",
+            "type": "string"
           },
-          "age": {
-            "type": [
-              "integer",
-              "null"
-            ],
-            "title": "Age"
+          "addressID": {
+            "name": "addressID",
+            "type": "string"
           },
-          "bio": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "title": "Bio",
-            "widget": {
-              "formlyConfig": {
-                "type": "textarea",
-                "templateOptions": {
-                  "placeholder": "Leaving this field empty will cause formData property to be `null`",
-                  "rows": 5
-                }
-              }
-            }
+          "addressIDDomain": {
+            "name": "addressIDDomain",
+            "type": "string"
+          },
+          "email_preferredLang": {
+            "name": "email_preferredLang",
+            "type": "string"
+          },
+          "url_name": {
+            "name": "url_name",
+            "type": "string"
+          },
+          "postalAddress": {
+            "name": "postalAddress"
+          },
+          "phone": {
+            "name": "phone"
+          },
+          "url_content": {
+            "name": "url_content",
+            "type": "string"
+          },
+          "email_content": {
+            "name": "email_content",
+            "type": "string"
+          },
+          "name": {
+            "name": "name"
+          },
+          "email_name": {
+            "name": "email_name",
+            "type": "string"
+          },
+          "id": {
+            "name": "id",
+            "type": "string"
+          },
+          "fax": {
+            "name": "fax"
           }
         }
       }
