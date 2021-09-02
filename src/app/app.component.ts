@@ -27,9 +27,10 @@ export class AppComponent {
   }
 
   convertFieldGroup(response: any) {
+    let fieldGroupList = [];
     Object.keys(response.properties).map(key => {
       // console.log(key);
-      let fieldGroupList = [];
+
       let entity = response.properties[key];
       // console.log(entity);
       let frmly = {
@@ -45,9 +46,10 @@ export class AppComponent {
       };
       console.log(frmly);
       fieldGroupList.push(frmly);
-      this.fieldList.push({ fieldGroup : fieldGroupList});
-      this.fields = this.fieldList;
+
     });
+    this.fieldList.push({ fieldGroup : fieldGroupList});
+    this.fields = this.fieldList;
   }
   convertToField(response:any){
     Object.keys(response.properties).map(key => {
