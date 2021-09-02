@@ -1,0 +1,118 @@
+{
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "additionalProperties": {
+      "type": "object"
+    },
+    "title": "Quality Notification Detail",
+    "properties": {
+      "Status": {
+        "name": "Status",
+        "id": "qn_detailInformation_status_1",
+        "key": "qn.detailInformation.status",
+        "type": "select",
+        "title": "Status",
+        "widget": {
+          "type": "select",
+          "formlyConfig": {
+            "type": "select",
+            "templateOptions": {
+              "translation": {
+                "notSupported": true,
+                "devComment": "Dev comment: QN_STATUS",
+                "translationKey": "QN_STATUS",
+                "description": "Status"
+              },
+              "options": [
+                {
+                  "translation": {
+                    "translationKey": "QN_STATUS_NEW"
+                  },
+                  "value": "new",
+                  "label": "New"
+                },
+                {
+                  "translation": {
+                    "translationKey": "QN_STATUS_IN_PROCESS"
+                  },
+                  "value": "in-process",
+                  "label": "In Process"
+                },
+                {
+                  "translation": {
+                    "translationKey": "QN_STATUS_OBSOLETED"
+                  },
+                  "value": "obsoleted",
+                  "label": "Obsoleted",
+                  "nonSelectable": true
+                },
+                {
+                  "translation": {
+                    "translationKey": "QN_STATUS_CANCELED"
+                  },
+                  "value": "canceled",
+                  "label": "Canceled",
+                  "nonSelectable": true
+                },
+                {
+                  "translation": {
+                    "translationKey": "QN_STATUS_COMPLETED"
+                  },
+                  "value": "completed",
+                  "label": "Completed"
+                },
+                {
+                  "translation": {
+                    "translationKey": "QN_STATUS_CLOSED"
+                  },
+                  "value": "closed",
+                  "label": "Closed",
+                  "nonSelectable": true
+                }
+              ]
+            }
+          }
+        }
+      },
+      "RequestId": {
+        "title": "AA",
+        "description": "AA",
+        "type": "object",
+        "required": [
+          "fullName"
+        ],
+        "properties": {
+          "fullName": {
+            "type": "string",
+            "title": "First name",
+            "default": "Chuck"
+          },
+          "age": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "title": "Age"
+          },
+          "bio": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "Bio",
+            "widget": {
+              "formlyConfig": {
+                "type": "textarea",
+                "templateOptions": {
+                  "placeholder": "Leaving this field empty will cause formData property to be `null`",
+                  "rows": 5
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
